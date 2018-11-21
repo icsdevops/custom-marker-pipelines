@@ -32,7 +32,9 @@ pipeline {
         timeout(time: 30, unit: 'SECONDS') 
       }
       input {
-        message "Should we continue?"
+        message "Should we deploy?"
+        submitter "icsdevops"
+        submitterParameter "APPROVER"
       }
       steps {
         echo "Continuing with deployment"
