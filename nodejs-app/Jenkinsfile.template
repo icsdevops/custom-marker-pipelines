@@ -18,7 +18,6 @@ pipeline {
          beforeAgent true
          branch 'master'
       }
-      agent { label 'nodejs-app' }
       steps {
          echo "TODO - build and push image"
          sh 'java -version'
