@@ -3,10 +3,9 @@ pipeline {
    options { 
     buildDiscarder(logRotator(numToKeepStr: '2'))
   }
-  
+  agent { label 'nodejs-app' }
    stages {
     stage('Test') {
-    agent { label 'nodejs-app' }
       steps {
         container('nodejs') {
           echo 'Hello World!'   
@@ -19,18 +18,11 @@ pipeline {
          beforeAgent true
          branch 'master'
       }
-      stage('Deploy') {
-      when {
-        beforeAgent true
-        branch 'master'
-      }
-      input {
-        message "Should we continue?"
-      }
+      agent { label 'nodejs-app' }
       steps {
-        echo "Continuing with deployment"
+         echo "TODO - build and push image"
       }
     }
-    }
-    }
+  }
 }
+
